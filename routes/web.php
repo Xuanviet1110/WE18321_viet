@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductController;
+
 //http://127.0.0.1:8000/ => base url 
-Route::get('/', function () {
+Route::get('/a', function () {
     echo 'Trang chủ';
     });
 Route::get('/test', function () {
@@ -40,3 +41,24 @@ Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
     Route::post('update-product', [ProductController::class, 'updatePostProduct'])->name('updatePostProduct');
     Route::get('search', [ProductController::class, 'searchProduct'])->name('searchProduct');
 });
+
+
+Route::get('test', [UserController::class, 'test']);
+
+
+//http://127.0.0.1:8080/admin/product/''
+Route::group([
+    'prefix'=>'admin','as'=>'admin'],function(){
+Route::group([
+    'prefix'=>'product',
+    'as'=>'.product'
+],function(){   
+//http://127.0.0.1:8080/admin/product/''
+route::get('/',[ProductController::class,'list'])->name('listProduct');
+route::get('/add-product',[ProductController::class,'addProduct'])->name('addProduct');
+
+});
+
+}
+
+);

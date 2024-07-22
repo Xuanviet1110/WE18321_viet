@@ -68,7 +68,7 @@ public function addPostProduct(request $req){
         ->join('category', 'category.id', '=', 'product.category_id')
         ->select('product.id', 'product.name', 'category.name as category_name', 'product.price', 'product.view')
         ->where('product.name', 'like', '%' . $searchTerm . '%')
-        ->orderBy('product.view', 'asc')
+        ->orderBy('product.view', 'desc')
         ->get();
 
     return view('product.listProduct', [

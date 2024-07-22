@@ -25,13 +25,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($listProduct as $value)
+            @foreach($listProducts as $value)
             <tr>
             <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
-                <td>{{ $value->category_name }}</td>
                 <td>{{ $value->price }}</td>
-                <td>{{ $value->view }}</td>
+                <td>{{ $value->image }}</td>
                 <td>
                 <a class="btn btn-primary" href="{{ route('product.updateProduct',$value->id)}}">Chỉnh sửa</a>
                     <a class="btn btn-danger" href="{{ route('product.deleteProduct',$value->id)}}">Xoa</a>

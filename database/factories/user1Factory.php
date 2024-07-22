@@ -7,9 +7,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\user1>
  */
-class UserFactory extends Factory
+class user1Factory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => substr($this->faker->name(), 0, 20),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make(Str::random(10)), // Tạo mật khẩu ngẫu nhiên và băm nó
@@ -30,5 +30,4 @@ class UserFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
         ];
     }
-
 }

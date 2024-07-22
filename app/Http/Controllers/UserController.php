@@ -160,7 +160,8 @@ $data= [
       DB::table('users')->insert($data);
       return redirect()->route('users.listUsers');  
 }
-public function deteleUser($idUser) {
-    
+public function test() {
+    return view('admin/products/list-product');
 }
+
 }
